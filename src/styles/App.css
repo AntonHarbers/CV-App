@@ -1,0 +1,42 @@
+:root{
+    --formWidth: 30%;
+    --formBG: rgba(25, 116, 146, 0.584);
+    --CVBG: rgb(236, 236, 236);
+}
+
+*{
+    margin: 0;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100dvh;
+    width: 100dvw;
+    
+}
+
+.formSection{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 1rem;
+
+    width: var(--formWidth);
+    height: 100%;
+    padding-top: 2rem;
+
+    background-color: var(--formBG);
+}
+
+.CVSection{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-grow: 1;
+    background-color: var(--CVBG);
+}

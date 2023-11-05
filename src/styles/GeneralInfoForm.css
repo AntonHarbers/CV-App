@@ -1,0 +1,27 @@
+.generalInfoForm{
+
+}
+
+.form{
+    border: 1px solid black;
+    padding: .5rem;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    gap: 5px;
+}
+
+input{
+    width: 60%;
+    padding: .1rem;
+}
+
+label{
+    padding: .1rem;
+    cursor: pointer;
+}
+
+.formRow{
+    display: flex;
+    justify-content: space-between;
+}
