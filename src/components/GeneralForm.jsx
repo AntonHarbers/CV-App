@@ -1,13 +1,6 @@
 import "../styles/GeneralInfoForm.css";
 
-export default function GeneralForm({
-  name,
-  email,
-  phoneNumber,
-  setName,
-  setEmail,
-  setPhoneNumber,
-}) {
+export default function GeneralForm({ generalInfo, setGeneralInfo }) {
   return (
     <div className="generalInfoForm form">
       <div className="formRow">
@@ -15,19 +8,23 @@ export default function GeneralForm({
         <input
           type="text"
           id="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          value={generalInfo.name}
+          onChange={(e) =>
+            setGeneralInfo({ ...generalInfo, name: e.target.value })
+          }
           placeholder="Enter your name..."
         />
       </div>
-      <div className="formRow"> 
+      <div className="formRow">
         {" "}
         <label htmlFor="email">Email:</label>
         <input
           id="email"
           type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={generalInfo.email}
+          onChange={(e) =>
+            setGeneralInfo({ ...generalInfo, email: e.target.value })
+          }
           placeholder="test@email.com"
         />
       </div>
@@ -36,8 +33,10 @@ export default function GeneralForm({
         <input
           id="tel"
           type="tel"
-          value={phoneNumber}
-          onChange={(e) => setPhoneNumber(e.target.value)}
+          value={generalInfo.phoneNumber}
+          onChange={(e) =>
+            setGeneralInfo({ ...generalInfo, phoneNumber: e.target.value })
+          }
           placeholder="001 234 567"
         />
       </div>
