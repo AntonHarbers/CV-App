@@ -1,24 +1,29 @@
 import { useState } from "react";
 import NewEducationItemForm from "./NewEducationItemForm";
+import DateFormat from "../utils/utils";
 
 export default function EducationalForm({
   educationalExperience,
   setEducationalExperience,
 }) {
   const addNewEducationalExperience = (newItem) => {
-    const newArray = [...educationalExperience, newItem]
-    setEducationalExperience(newArray)
-  }
+    const newArray = [...educationalExperience, newItem];
+    setEducationalExperience(newArray);
+  };
 
   const removeEducationalExperience = (idToRemove) => {
-    const newArray = educationalExperience.filter(item => item.id !== idToRemove);
-    setEducationalExperience(newArray)
-  }
+    const newArray = educationalExperience.filter(
+      (item) => item.id !== idToRemove
+    );
+    setEducationalExperience(newArray);
+  };
 
   return (
-    <div>
+    <div className="educationFormContainer">
       <h2>Education:</h2>
-      <NewEducationItemForm addNewEducationalExperience={addNewEducationalExperience}/>
+      <NewEducationItemForm
+        addNewEducationalExperience={addNewEducationalExperience}
+      />
       {educationalExperience.map((item, index) => {
         return (
           <div className="educationFormItem" key={index}>
@@ -29,24 +34,25 @@ export default function EducationalForm({
             <div className="educationFormItemRow">
               <h3>From:</h3>
               <h3>
-                {new Date(item.startDate).toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "long",
-                })}
+                {DateFormat(item.startDate)}
               </h3>
             </div>{" "}
             <div className="educationFormItemRow">
               <h3>To:</h3>
-              <h3>{item.endDate}</h3>
+              <h3>{DateFormat(item.endDate)} </h3>
             </div>{" "}
             <div className="educationFormItemRow">
               <h3>Type of Education:</h3>
               <h3>{item.typeOfEducation}</h3>
             </div>
             <div className="educationFormItemRow">
-              <button onClick={() => {
-                removeEducationalExperience(item.id)
-              }}>Remove</button>
+              <button
+                onClick={() => {
+                  removeEducationalExperience(item.id);
+                }}
+              >
+                Remove
+              </button>
             </div>
           </div>
         );

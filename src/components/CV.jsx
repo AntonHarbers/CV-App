@@ -1,3 +1,5 @@
+import DateFormat from "../utils/utils"
+
 export default function CV({generalInfo, educationalExperience, workExperience}) {
   return (
     <div>
@@ -14,8 +16,7 @@ export default function CV({generalInfo, educationalExperience, workExperience})
             <div key={index}>
               <h4>{educationItem.schoolName}</h4>
               <h4>{educationItem.typeOfEducation}</h4>
-              <h4>{educationItem.startDate}</h4>
-              <h4>{educationItem.endDate}</h4>
+              <h4>{DateFormat(educationItem.startDate)} - {DateFormat(educationItem.endDate)}</h4>
             </div>
           )
         })}

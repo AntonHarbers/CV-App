@@ -7,21 +7,6 @@ import EducationalForm from "./components/EducationalForm";
 import PracticalForm from "./components/PracticalForm";
 import CV from "./components/CV";
 
-const dummyEducationItem = {
-  schoolName: "JIS",
-  startDate: Date.now(),
-  endDate: Date.now(),
-  typeOfEducation: "High School",
-  id: uuidv4(),
-}
-const dummyEducationItem1 = {
-  schoolName: "DIS",
-  startDate: Date.now(),
-  endDate: Date.now(),
-  typeOfEducation: "Middle School",
-  id: uuidv4(),
-}
-
 const dummyWorkItem = {
   companyName: "GIZ",
   startDate: Date.now(),
@@ -41,7 +26,7 @@ const dummyWorkItem1 = {
 function App() {
   const [formsHidden, setFormsHidden] = useState(false);
   const [generalInfo, setGeneralInfo] = useState({name: "", email: "", phoneNumber: ""})
-  const [educationalExperience, setEducationalExperience] = useState([dummyEducationItem, dummyEducationItem1]);
+  const [educationalExperience, setEducationalExperience] = useState([]);
   const [workExperience, setWorkExperience] = useState([dummyWorkItem, dummyWorkItem]);
 
   const toggleForms = () => {

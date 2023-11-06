@@ -1,0 +1,75 @@
+.educationFormContainer{
+    width: 80%;
+    border: 1px solid black;
+    padding: .5rem;
+}
+
+
+/*  <div className="educationFormItem" key={index}>
+            <div className="educationFormItemRow">
+              <h3>School Name:</h3>
+              <h3>{item.schoolName}</h3>
+            </div>
+            <div className="educationFormItemRow">
+              <h3>From:</h3>
+              <h3>
+                {new Date(item.startDate).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                })}
+              </h3>
+            </div>{" "} */
+
+.educationFormItem{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    margin-top: 1rem;
+    background-color: rgba(0, 255, 255, 0.104);
+    padding: .5rem;
+}
+
+.educationFormItemRow{
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.educationFormItemRow>button{
+    border-radius: 5px;
+    background-color: rgb(172, 20, 20);
+}
+
+.educationFormItemRow>button:hover{
+    cursor: pointer;
+    background-color: rgba(172, 20, 20, 0.335);
+}
+
+.educationFormItemRow>button:active{
+    cursor: pointer;
+    background-color: rgba(255, 0, 0)
+}
+
+
+
+.newEducationItemForm{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+}
+
+.newItemFormRow{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.label{
+    cursor: pointer;
+}
+
+.newEducationFormInput{
+    width: 35%;
+}
+
