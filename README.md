@@ -12,6 +12,8 @@ Persistant data with localStorage.
 ## Todos:
 
 ```
+    - sidebar slide in and out animation, current problem is that the element is being
+    removed from the dom before the css class changes
     - styling
     - implement change of theme functionality (colorScheme and Orientation/Format of CV)
     - implement signals to replace useState functionality
