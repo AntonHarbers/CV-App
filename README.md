@@ -12,12 +12,9 @@ Persistant data with localStorage.
 ## Todos:
 
 ```
-    - display dates correctly
     - styling
-    - implement work experience functionality
     - implement change of theme functionality (colorScheme and Orientation/Format of CV)
     - implement signals to replace useState functionality
-    - 
 ```
 
 

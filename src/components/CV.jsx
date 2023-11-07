@@ -1,6 +1,8 @@
-import DateFormat from "../utils/utils"
-
-export default function CV({generalInfo, educationalExperience, workExperience}) {
+export default function CV({
+  generalInfo,
+  educationalExperience,
+  workExperience,
+}) {
   return (
     <div>
       <div className="generalSectionCV">
@@ -16,18 +18,27 @@ export default function CV({generalInfo, educationalExperience, workExperience})
             <div key={index}>
               <h4>{educationItem.schoolName}</h4>
               <h4>{educationItem.typeOfEducation}</h4>
-              <h4>{DateFormat(educationItem.startDate)} - {DateFormat(educationItem.endDate)}</h4>
+              <h4>
+                {educationItem.startDate} - {educationItem.endDate}
+              </h4>
             </div>
-          )
+          );
         })}
       </div>
       <div className="workSectionCV">
         <h1>Work Experience</h1>
         {workExperience.map((workItem, index) => {
-          return <div key={index}>{workItem.companyName}</div>
+          return (
+            <div key={index}>
+              <h4>{workItem.companyName}</h4>
+              <h4>{workItem.jobDescription}</h4>
+              <h4>
+                {workItem.startDate} - {workItem.endDate}
+              </h4>
+            </div>
+          );
         })}
       </div>
     </div>
-    
-  )
+  );
 }

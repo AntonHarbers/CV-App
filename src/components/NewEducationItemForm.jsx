@@ -1,7 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import { useState } from "react";
 import '../styles/EducationForm.css'
-import DateFormat from "../utils/utils";
 
 export default function NewEducationItemForm({ addNewEducationalExperience }) {
 
@@ -9,19 +8,20 @@ export default function NewEducationItemForm({ addNewEducationalExperience }) {
 
   const [newItem, setNewItem] = useState({
     id: uuidv4(),
-    schoolName: "Test",
-    startDate: Date.now(),
-    endDate: Date.now(),
-    typeOfEducation: "Test",
+    schoolName: "",
+    startDate: "",
+    endDate: "",
+    typeOfEducation: "",
   });
+  
 
   const resetNewItem = () => {
     setNewItem({
       id: uuidv4(),
-      schoolName: "Test",
-      startDate: Date.now(),
-      endDate: Date.now(),
-      typeOfEducation: "Test",
+      schoolName: "",
+      startDate: "",
+      endDate: "",
+      typeOfEducation: "",
     });
   };
 
@@ -41,13 +41,13 @@ export default function NewEducationItemForm({ addNewEducationalExperience }) {
       </div>
       <div className="newItemFormRow">
         <label htmlFor="startDate">From:</label>
-        <input className="newEducationFormInput" type="date" name="startDate" id="startDate" value={newItem.startDate} onChange={(e) => {
+        <input className="newEducationFormInput" type="text" name="startDate" id="startDate" value={newItem.startDate} onChange={(e) => {
             setNewItem({...newItem, startDate: e.target.value})
         }} />
       </div>
       <div className="newItemFormRow">
         <label htmlFor="endDate">To:</label>
-        <input className="newEducationFormInput" type="date" name="endDate" id="endDate" value={newItem.endDate} onChange={(e) => {
+        <input className="newEducationFormInput" type="text" name="endDate" id="endDate" value={newItem.endDate} onChange={(e) => {
             setNewItem({...newItem, endDate: e.target.value})
         }} />
       </div>
@@ -55,6 +55,11 @@ export default function NewEducationItemForm({ addNewEducationalExperience }) {
       <button
         onClick={(e) => {
           e.preventDefault();
+
+          if(newItem.endDate == "" || newItem.startDate == "" || newItem.schoolName == "" || newItem.typeOfEducation == ""){
+            alert("Please fill out all the required Information");
+            return;
+          }
           addNewEducationalExperience(newItem);
           resetNewItem();
         }}
