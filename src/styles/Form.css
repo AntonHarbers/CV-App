@@ -1,0 +1,93 @@
+.formContainer {
+  width: 80%;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+.formItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  border-radius: 5px;
+  padding: 0.5rem;
+  border: 1px solid var(--tertiary);
+}
+
+.formItemRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.formItemRow > button {
+  width: 20%;
+  border-radius: 5px;
+  border: 0px;
+  background-color: var(--primary);
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.formItemRow > button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.formItemRow > button:active {
+  opacity: 1;
+}
+
+.newItemForm {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  background-color: var(--tertiary);
+  border-radius: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  align-items: center;
+  color: var(--dark);
+}
+
+.newItemForm > button {
+  width: 20%;
+  border-radius: 5px;
+  border: 0px;
+  background-color: var(--secondary);
+  margin-top: 1rem;
+}
+
+.newItemForm > button:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.newItemForm > button:active {
+  opacity: 0.5;
+}
+
+.newItemFormRow {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+label {
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.newFormInput {
+  width: 50%;
+  margin-right: 5px;
+  border-radius: 5px;
+  padding: 5px;
+  outline: none;
+  border: 1px solid var(--tertiary);
+}
+
+.newFormInput:focus {
+  border: 1px solid var(--primary);
+}

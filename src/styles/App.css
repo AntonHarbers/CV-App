@@ -1,6 +1,11 @@
 :root {
   --formBG: rgba(25, 116, 146, 0.584);
   --CVBG: rgb(236, 236, 236);
+  --dark: #222222;
+  --light: #ffffff;
+  --primary: #4b4e6d;
+  --secondary: #84dcc6;
+  --tertiary: #95a3b3;
 }
 
 * {
@@ -27,25 +32,65 @@
   padding-top: 2rem;
   padding-bottom: 2rem;
 
-  background-color: var(--formBG);
+  background-color: var(--dark);
+  color: var(--light);
 
   overflow-y: scroll;
   opacity: 1;
   width: 30%;
   transition: opacity 0.3s, width 0.3s;
 
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--secondary);
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--tertiary);
+  }
 }
 
 .formSection-exit {
-    opacity: 0;
-    width: 0%;
+  opacity: 0;
+  width: 0%;
 }
 
-.formSection-enter{
-    opacity: 1;
-    width: 50%;
+.formSection-enter {
+  opacity: 0;
+  width: 0%;
 }
 
+.formSection-enter.active {
+  opacity: 1;
+  width: 30%;
+}
+
+.sidebarHeader {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.sidebarHeader > button {
+  border-radius: 5px;
+  border: 0px;
+  padding: 10px;
+  width: 100px;
+  background-color: var(--secondary);
+}
+
+.sidebarHeader > button:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.sidebarHeader > button:active {
+  opacity: 1;
+  cursor: pointer;
+}
 
 .CVSection {
   display: flex;

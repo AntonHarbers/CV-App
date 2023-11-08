@@ -1,23 +1,31 @@
-.generalInfoForm{
-    border: 1px solid black;
-    padding: .5rem;
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-    gap: 5px;
+.generalInfoForm {
+  border: 1px solid black;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  gap: 5px;
+  border-radius: 5px;
+  background-color: var(--tertiary);
+  border: 0px;
+  color: var(--dark);
 }
 
-input{
-    width: 60%;
-    padding: .1rem;
+input {
+  width: 50%;
+  margin-right: 5px;
+  border-radius: 5px;
+  padding: 5px;
+  outline: none;
+  border: 1px solid var(--tertiary);
 }
 
-label{
-    padding: .1rem;
-    cursor: pointer;
+label {
+  padding: 0.1rem;
+  cursor: pointer;
 }
 
-.formRow{
-    display: flex;
-    justify-content: space-between;
+.formRow {
+  display: flex;
+  justify-content: space-between;
 }

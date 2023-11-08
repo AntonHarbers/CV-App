@@ -1,4 +1,4 @@
-import NewWorkItemForm from './NewWorkItemForm'
+import NewWorkItemForm from './NewWorkItemForm';
 
 export default function PracticalForm({ workExperience, setWorkExperience }) {
   const addNewWorkExperience = (newItem) => {
@@ -14,28 +14,28 @@ export default function PracticalForm({ workExperience, setWorkExperience }) {
   return (
     <>
       <h2>Work Experience</h2>
-      <div className="workFormContainer">
-        <NewWorkItemForm addNewWorkExperience={addNewWorkExperience}  />
+      <div className="formContainer">
+        <NewWorkItemForm addNewWorkExperience={addNewWorkExperience} />
         {workExperience.map((item, index) => {
           return (
-            <div className="workFormItem" key={index}>
-              <div className="workFormItemRow">
-                <h3>School Name:</h3>
+            <div className="formItem" key={index}>
+              <div className="formItemRow">
+                <h3>Company Name:</h3>
                 <h3>{item.companyName}</h3>
               </div>
-              <div className="workFormItemRow">
-                <h3>Type of Education:</h3>
+              <div className="formItemRow">
+                <h3>Job Description:</h3>
                 <h3>{item.jobDescription}</h3>
               </div>
-              <div className="workFormItemRow">
+              <div className="formItemRow">
                 <h3>From:</h3>
                 <h3>{item.startDate}</h3>
-              </div>{" "}
-              <div className="workFormItemRow">
+              </div>{' '}
+              <div className="formItemRow">
                 <h3>To:</h3>
                 <h3>{item.endDate} </h3>
-              </div>{" "}
-              <div className="workFormItemRow">
+              </div>{' '}
+              <div className="formItemRow">
                 <button
                   onClick={() => {
                     removeWorkExperience(item.id);
