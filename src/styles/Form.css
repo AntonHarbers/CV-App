@@ -21,21 +21,29 @@
 
 .formItemRow > button {
   width: 20%;
-  border-radius: 5px;
   border: 0px;
-  background-color: var(--primary);
-  margin-top: 1rem;
   margin-left: auto;
   margin-right: auto;
+  background-color: transparent;
 }
 
-.formItemRow > button:hover {
+.deleteIcon {
   cursor: pointer;
-  opacity: 0.8;
+  height: 2rem;
+  width: 2rem;
+  opacity: 0.6;
+  color: red;
+  transition: all 0.15s ease;
 }
 
-.formItemRow > button:active {
+.deleteIcon:hover {
   opacity: 1;
+  transform: scale(1.1);
+}
+
+.deleteIcon:active {
+  opacity: 0.5;
+  transform: scale(0.9);
 }
 
 .newItemForm {
@@ -53,19 +61,27 @@
 
 .newItemForm > button {
   width: 20%;
-  border-radius: 5px;
   border: 0px;
-  background-color: var(--secondary);
-  margin-top: 1rem;
+  background-color: transparent;
 }
 
-.newItemForm > button:hover {
+.addIcon {
+  color: var(--secondary);
   opacity: 0.8;
+  height: 2rem;
+  width: 2rem;
   cursor: pointer;
+  transition: all 0.15s ease;
 }
 
-.newItemForm > button:active {
+.addIcon:hover {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+.addIcon:active {
   opacity: 0.5;
+  transform: scale(0.9);
 }
 
 .newItemFormRow {
