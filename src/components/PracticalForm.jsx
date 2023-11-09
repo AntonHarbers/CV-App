@@ -28,6 +28,10 @@ export default function PracticalForm({ workExperience, setWorkExperience }) {
                 <h4>{item.jobDescription}</h4>
               </div>
               <div className="formItemRow">
+                <h4>Job Details:</h4>
+                <h4>{item.details}</h4>
+              </div>
+              <div className="formItemRow">
                 <h4>From:</h4>
                 <h4>{item.startDate}</h4>
               </div>{' '}

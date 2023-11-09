@@ -6,6 +6,7 @@ export default function NewEducationItemForm({ addNewEducationalExperience }) {
   const [newItem, setNewItem] = useState({
     id: uuidv4(),
     schoolName: '',
+    honors: '',
     startDate: '',
     endDate: '',
     typeOfEducation: '',
@@ -15,6 +16,7 @@ export default function NewEducationItemForm({ addNewEducationalExperience }) {
     setNewItem({
       id: uuidv4(),
       schoolName: '',
+      honors: '',
       startDate: '',
       endDate: '',
       typeOfEducation: '',
@@ -48,6 +50,20 @@ export default function NewEducationItemForm({ addNewEducationalExperience }) {
           value={newItem.schoolName}
           onChange={(e) => {
             setNewItem({ ...newItem, schoolName: e.target.value });
+          }}
+        />
+      </div>
+      <div className="newItemFormRow">
+        <label htmlFor="honors">Honors:</label>
+        <input
+          className="newFormInput"
+          type="text"
+          name="honors"
+          placeholder="Honors received"
+          id="honors"
+          value={newItem.honors}
+          onChange={(e) => {
+            setNewItem({ ...newItem, honors: e.target.value });
           }}
         />
       </div>

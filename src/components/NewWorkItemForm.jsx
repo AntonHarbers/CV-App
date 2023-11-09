@@ -7,6 +7,7 @@ export default function NewWorkItemForm({ addNewWorkExperience }) {
     id: uuidv4(),
     companyName: '',
     jobDescription: '',
+    details: '',
     startDate: '',
     endDate: '',
   });
@@ -16,6 +17,7 @@ export default function NewWorkItemForm({ addNewWorkExperience }) {
       id: uuidv4(),
       companyName: '',
       jobDescription: '',
+      details: '',
       startDate: '',
       endDate: '',
     });
@@ -48,6 +50,20 @@ export default function NewWorkItemForm({ addNewWorkExperience }) {
           value={newItem.jobDescription}
           onChange={(e) => {
             setNewItem({ ...newItem, jobDescription: e.target.value });
+          }}
+        />
+      </div>
+      <div className="newItemFormRow">
+        <label htmlFor="jobDetails">Job Details:</label>
+        <input
+          className="newFormInput"
+          placeholder="Job Details..."
+          type="textarea"
+          name="jobDescription"
+          id="jobDescription"
+          value={newItem.details}
+          onChange={(e) => {
+            setNewItem({ ...newItem, details: e.target.value });
           }}
         />
       </div>

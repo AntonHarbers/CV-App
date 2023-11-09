@@ -35,6 +35,10 @@ export default function EducationalForm({
                 <h4>{item.schoolName}</h4>
               </div>
               <div className="formItemRow">
+                <h4>Honors:</h4>
+                <h4>{item.honors}</h4>
+              </div>
+              <div className="formItemRow">
                 <h4>From:</h4>
                 <h4>{item.startDate}</h4>
               </div>{' '}

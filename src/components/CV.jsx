@@ -21,6 +21,9 @@ export default function CV({
                 <h3>{educationItem.typeOfEducation}</h3>
 
                 <h3>{educationItem.schoolName}</h3>
+                {educationItem.honors && (
+                  <h4>Honors: {educationItem.honors}</h4>
+                )}
                 <h4>
                   {educationItem.startDate} - {educationItem.endDate}
                 </h4>
@@ -36,6 +39,7 @@ export default function CV({
                 <h4>{workItem.jobDescription}</h4>
 
                 <h4>{workItem.companyName}</h4>
+                {workItem.details && <h4>{workItem.details}</h4>}
                 <h4>
                   {workItem.startDate} - {workItem.endDate}
                 </h4>
