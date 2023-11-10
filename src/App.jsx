@@ -15,7 +15,7 @@ import ThemeSettings from './components/ThemeSettings';
 
 function App() {
   const [showSidebar, setShowSidebar] = useState(false);
-  const [showForms, setShowForms] = useState(false);
+  const [showForms, setShowForms] = useState(true);
   const [sidebarIsMounted, setSidebarIsMounted] = useState(false);
 
   const [generalInfo, setGeneralInfo] = useState(getGeneralInfoFromStorage);
@@ -162,11 +162,11 @@ function App() {
               />
               <EducationalForm
                 educationalExperience={educationalExperience}
-                updateEducationalXP={updateEducationalXP}
+                setEducationalExperience={updateEducationalXP}
               />
               <PracticalForm
                 workExperience={workExperience}
-                updateWorkXP={updateWorkXP}
+                setWorkExperience={updateWorkXP}
               />
             </>
           ) : (
