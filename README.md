@@ -13,8 +13,9 @@ Persistant data with localStorage.
 ## Todos:
 
 ```
-    - add hidden attribute to all education and work elements, when true it does not show up on the CV itself (today)
-    - styling of elements on cv paper (Today)
-    - implement change of theme functionality (colorScheme and Orientation/Format of CV) (Friday)
-    - implement signals to replace useState functionality (Friday)
+    - fix bugs with clicking the buttons not working functions
+    - add hidden attribute to all education and work elements, when true it does not show up on the CV itself (done)
+    - styling of elements on cv paper (done for now)
+    - implement change of theme functionality (colorScheme and Orientation/Format of CV) (Added Section where these settings can be changed)
+    - implement signals to replace useState functionality (Saturday)
 ```

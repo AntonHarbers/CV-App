@@ -26,8 +26,6 @@
   align-items: center;
   gap: 1rem;
 
-  width: 30%;
-  min-width: 400px;
   height: calc(100dvh - 4rem);
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -38,6 +36,7 @@
   overflow-y: scroll;
   transition: opacity 0.3s, width 0.3s;
 
+  width: 495px;
   &::-webkit-scrollbar {
     width: 5px;
   }
@@ -54,19 +53,16 @@
 .formSection-exit {
   opacity: 0;
   width: 0%;
-  min-width: 0px;
 }
 
 .formSection-enter {
   opacity: 0;
   width: 0%;
-  min-width: 0px;
 }
 
 .formSection-enter.active {
   opacity: 1;
   width: 30%;
-  min-width: 495px;
 }
 
 .sidebarHeader {

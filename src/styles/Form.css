@@ -107,3 +107,33 @@ label {
 .newFormInput:focus {
   border: 1px solid var(--primary);
 }
+
+.hideIcon {
+  color: var(--secondary);
+  opacity: 0.8;
+  height: 2rem;
+  width: 2rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.showIcon {
+  color: var(--tertiary);
+  opacity: 0.8;
+  height: 2rem;
+  width: 2rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.hideIcon:hover,
+.showIcon:hover {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+.hideIcon:active,
+.showIcon:active {
+  opacity: 0.5;
+  transform: scale(0.9);
+}
