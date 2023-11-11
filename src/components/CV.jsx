@@ -11,10 +11,13 @@ export default function CV({
         <div className="generalSectionCV">
           <h1>{generalInfo.name}</h1>
           <p>{generalInfo.email}</p>
-          <p># {generalInfo.phoneNumber}</p>
+          <p>
+            {generalInfo.phoneNumber != '' && <span>#</span>}
+            {generalInfo.phoneNumber}
+          </p>
         </div>
         <div className="educationSectionCV">
-          <h1>Education</h1>
+          {educationalExperience.length != 0 && <h1>Education</h1>}
           {educationalExperience.map((educationItem, index) => {
             if (!educationItem.hidden) {
               return (
@@ -34,7 +37,7 @@ export default function CV({
           })}
         </div>
         <div className="workSectionCV">
-          <h1>Work Experience</h1>
+          {workExperience.length != 0 && <h1>Work Experience</h1>}
           {workExperience.map((workItem, index) => {
             if (!workItem.hidden) {
               return (

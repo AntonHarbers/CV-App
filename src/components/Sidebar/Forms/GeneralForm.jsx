@@ -1,4 +1,4 @@
-import "../styles/GeneralInfoForm.css";
+import '../../../styles/GeneralInfoForm.css';
 
 export default function GeneralForm({ generalInfo, setGeneralInfo }) {
   return (
@@ -18,7 +18,7 @@ export default function GeneralForm({ generalInfo, setGeneralInfo }) {
           />
         </div>
         <div className="formRow">
-          {" "}
+          {' '}
           <label htmlFor="email">Email:</label>
           <input
             id="email"

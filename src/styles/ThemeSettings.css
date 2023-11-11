@@ -1,0 +1,57 @@
+.themeFormContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.themeFormContainer > h2 {
+  margin-top: 2rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.themeFormRow > button {
+  border-radius: 5px;
+  border: 0px;
+  width: 3rem;
+  height: 2.5rem;
+  background-color: var(--secondary);
+  cursor: pointer;
+}
+
+.sidebarIcon {
+  height: 2rem;
+  width: 2rem;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.sidebarIcon:hover {
+  color: var(--light);
+}
+
+.darkModeIcon {
+  color: var(--dark);
+}
+
+.lightModeIcon {
+  color: var(--light);
+}
+
+.themeFormRow {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.themeFormRow > label {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.themeFormRow > input {
+  height: 3rem;
+  width: 3rem;
+}

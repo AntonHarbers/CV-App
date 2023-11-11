@@ -1,5 +1,6 @@
-import { DeleteIcon, HideIcon, ShowIcon } from '../utils/icons';
-import NewEducationItemForm from './NewEducationItemForm';
+import FormItemRow from '../../../utils/FormItemRow';
+import { DeleteIcon, HideIcon, ShowIcon } from '../../../utils/icons';
+import NewEducationItemForm from '../NewItem/NewEducationItemForm';
 
 export default function EducationalForm({
   educationalExperience,
@@ -24,29 +25,17 @@ export default function EducationalForm({
         <NewEducationItemForm
           addNewEducationalExperience={addNewEducationalExperience}
         />
-        {educationalExperience.map((item, index) => {
+        {educationalExperience.map((item) => {
           return (
-            <div className="formItem" key={index}>
-              <div className="formItemRow">
-                <h4>Type of Education:</h4>
-                <h4>{item.typeOfEducation}</h4>
-              </div>
-              <div className="formItemRow">
-                <h4>School Name:</h4>
-                <h4>{item.schoolName}</h4>
-              </div>
-              <div className="formItemRow">
-                <h4>Honors:</h4>
-                <h4>{item.honors}</h4>
-              </div>
-              <div className="formItemRow">
-                <h4>From:</h4>
-                <h4>{item.startDate}</h4>
-              </div>{' '}
-              <div className="formItemRow">
-                <h4>To:</h4>
-                <h4>{item.endDate} </h4>
-              </div>{' '}
+            <div className="formItem" key={item.id}>
+              <FormItemRow
+                text={'Type of Education:'}
+                content={item.typeOfEducation}
+              />
+              <FormItemRow text={'School Name:'} content={item.schoolName} />
+              <FormItemRow text={'Honors:'} content={item.honors} />
+              <FormItemRow text={'Start Date:'} content={item.startDate} />
+              <FormItemRow text={'End Date:'} content={item.endDate} />
               <div className="formItemRow">
                 <button
                   onClick={() => {

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import './styles/App.css';
-import GeneralForm from './components/GeneralForm';
-import EducationalForm from './components/EducationalForm';
-import PracticalForm from './components/PracticalForm';
+import GeneralForm from './components/Sidebar/Forms/GeneralForm';
+import EducationalForm from './components/Sidebar/Forms/EducationalForm';
+import PracticalForm from './components/Sidebar/Forms/PracticalForm';
 import CV from './components/CV';
 import {
   BackIcon,
@@ -11,45 +11,28 @@ import {
   ShowSidebarIcon,
   ThemeIcon,
 } from './utils/icons';
-import ThemeSettings from './components/ThemeSettings';
+import ThemeSettings from './components/Sidebar/Theme/ThemeSettings';
+import {
+  getEducationalXPFromStorage,
+  getWorkXPFromStorage,
+  getGeneralInfoFromStorage,
+} from './utils/storage';
+import {
+  dummyEducationData,
+  dummyGeneralData,
+  dummyWorkData,
+} from './utils/data';
 
 function App() {
   const [showSidebar, setShowSidebar] = useState(false);
   const [showForms, setShowForms] = useState(true);
   const [sidebarIsMounted, setSidebarIsMounted] = useState(false);
-
   const [generalInfo, setGeneralInfo] = useState(getGeneralInfoFromStorage);
   const [educationalExperience, setEducationalExperience] = useState(
     getEducationalXPFromStorage
   );
   const [workExperience, setWorkExperience] = useState(getWorkXPFromStorage);
-
-  function getGeneralInfoFromStorage() {
-    let storedInfo = localStorage.getItem('generalInfo');
-    if (storedInfo === null) {
-      return { name: '', email: '', phoneNumber: '' };
-    } else {
-      return JSON.parse(storedInfo);
-    }
-  }
-
-  function getEducationalXPFromStorage() {
-    let storedInfo = localStorage.getItem('eduXP');
-    if (storedInfo === null) {
-      return [];
-    } else {
-      return JSON.parse(storedInfo);
-    }
-  }
-
-  function getWorkXPFromStorage() {
-    let storedInfo = localStorage.getItem('workXP');
-    if (storedInfo === null) {
-      return [];
-    } else {
-      return JSON.parse(storedInfo);
-    }
-  }
+  const [darkMode, setDarkMode] = useState(true);
 
   const toggleForms = () => {
     setShowForms(!showForms);
@@ -77,52 +60,9 @@ function App() {
   };
 
   const dummyData = () => {
-    updateGeneralInfo({
-      name: 'Test Tester',
-      email: 'test.tester@test.com',
-      phoneNumber: '123-456 789',
-    });
-    updateEducationalXP([
-      {
-        id: 1,
-        schoolName: 'Test School',
-        typeOfEducation: 'University',
-        honors: 'Magna Cum Laude',
-        startDate: '2021',
-        endDate: '2023',
-        hidden: false,
-      },
-      {
-        id: 2,
-        schoolName: 'Test High School',
-        typeOfEducation: 'High School',
-        honors: '',
-        startDate: '2017',
-        endDate: '2021',
-        hidden: true,
-      },
-    ]);
-    updateWorkXP([
-      {
-        id: 1,
-        companyName: 'Test Company Inc.',
-        jobDescription: 'Tester',
-        details:
-          'Tested tests, did some work here and there, tested some more, and then tested again.',
-        startDate: '2023',
-        endDate: 'Today',
-        hidden: true,
-      },
-      {
-        id: 2,
-        companyName: 'Test Company Inc.',
-        jobDescription: 'Tester',
-        details: '',
-        startDate: '2019',
-        endDate: '2023',
-        hidden: false,
-      },
-    ]);
+    updateGeneralInfo(dummyGeneralData);
+    updateEducationalXP(dummyEducationData);
+    updateWorkXP(dummyWorkData);
   };
 
   const toggleSidebar = () => {
@@ -131,7 +71,7 @@ function App() {
       setShowSidebar(true);
       setTimeout(() => {
         document.querySelector('.formSection').classList.add('active');
-      }, 1); // Add the class after a small delay to trigger the animation
+      }, 1);
     } else {
       document.querySelector('.formSection').classList.remove('active');
       setTimeout(() => {
@@ -171,7 +111,7 @@ function App() {
             </>
           ) : (
             <div>
-              <ThemeSettings />
+              <ThemeSettings darkMode={darkMode} setDarkMode={setDarkMode} />
             </div>
           )}
         </div>

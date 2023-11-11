@@ -14,6 +14,6 @@ Persistant data with localStorage.
 
 ```
     - styling of elements on cv paper (done for now)
-    - implement change of theme functionality, app theme, main color, secondary color, layout, font
-    - see if a pdf can be exported
+    - implement functionality of theme section (sunday)
+    - see if a pdf can be exported (sunday)
 ```
