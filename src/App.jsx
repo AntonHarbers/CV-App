@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import './styles/App.css';
+import { useReactToPrint } from 'react-to-print';
 import GeneralForm from './components/Sidebar/Forms/GeneralForm';
 import EducationalForm from './components/Sidebar/Forms/EducationalForm';
 import PracticalForm from './components/Sidebar/Forms/PracticalForm';
@@ -80,6 +81,11 @@ function App() {
     }
   };
 
+  const componentRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
+
   return (
     <div className="container">
       {showSidebar && (
@@ -119,10 +125,13 @@ function App() {
 
       <div className="CVSection">
         <CV
+          ref={componentRef}
           generalInfo={generalInfo}
           educationalExperience={educationalExperience}
           workExperience={workExperience}
         />
+        <button onClick={handlePrint}>Print this out!</button>
+
         {!showSidebar && (
           <button onClick={toggleSidebar} className="editButton">
             {ShowSidebarIcon()}
