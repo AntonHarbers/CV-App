@@ -4,14 +4,22 @@
   justify-content: start;
   align-items: center;
   height: 100dvh;
+  margin: 1rem;
+}
+
+@media print {
+  .cvPaper {
+    width: 210mm; /* A4 width */
+    height: 297mm; /* A4 height */
+    /* other styles to adjust padding, margins, etc. */
+  }
 }
 
 .cvPaper {
-  margin: 2rem;
   background-color: white;
   width: 40vw;
-  min-width: 500px;
-  min-height: 900px;
+  width: 210mm;
+  height: 297mm;
 }
 
 .workItem > h4 {
@@ -20,12 +28,12 @@
 }
 
 .generalSectionCV {
-  margin-top: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: start;
   gap: 0.4rem;
+  background-color: var(--secondary);
 }
 
 .educationSectionCV {
@@ -51,6 +59,7 @@
   border-bottom: 1px solid black;
   margin-bottom: 1rem;
 }
+
 .workSectionCV {
   margin-top: 1rem;
   margin-left: 10%;

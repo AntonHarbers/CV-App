@@ -8,6 +8,7 @@ import CV from './components/CV';
 import {
   BackIcon,
   DummyDataIcon,
+  PDFIcon,
   RefreshIcon,
   ShowSidebarIcon,
   ThemeIcon,
@@ -17,6 +18,9 @@ import {
   getEducationalXPFromStorage,
   getWorkXPFromStorage,
   getGeneralInfoFromStorage,
+  getMainColorFromStorage,
+  getBackgroundColorFromStorage,
+  getTextColorFromStorage,
 } from './utils/storage';
 import {
   dummyEducationData,
@@ -33,7 +37,13 @@ function App() {
     getEducationalXPFromStorage
   );
   const [workExperience, setWorkExperience] = useState(getWorkXPFromStorage);
-  const [darkMode, setDarkMode] = useState(true);
+  const [mainColor, setMainColor] = useState(getMainColorFromStorage);
+  const [backgroundColor, setBackgroundColor] = useState(
+    getBackgroundColorFromStorage
+  );
+  const [textColor, setTextColor] = useState(getTextColorFromStorage);
+  // headerpositons: 0 = left, 1 = mid, 2 = right
+  const [headerPosition, setHeaderPosition] = useState(1);
 
   const toggleForms = () => {
     setShowForms(!showForms);
@@ -52,6 +62,19 @@ function App() {
   const updateWorkXP = (workXP) => {
     setWorkExperience(workXP);
     localStorage.setItem('workXP', JSON.stringify(workXP));
+  };
+
+  const updateColorScheme = (colorInt, color) => {
+    if (colorInt == 1) {
+      setMainColor(color);
+      localStorage.setItem('mainColor', color);
+    } else if (colorInt == 2) {
+      setBackgroundColor(color);
+      localStorage.setItem('backgroundColor', color);
+    } else {
+      setTextColor(color);
+      localStorage.setItem('textColor', color);
+    }
   };
 
   const resetData = () => {
@@ -81,9 +104,10 @@ function App() {
     }
   };
 
-  const componentRef = useRef();
-  const handlePrint = useReactToPrint({
-    content: () => componentRef.current,
+  const cvRef = useRef();
+  const handlePDFPrint = useReactToPrint({
+    content: () => cvRef.current,
+    documentTitle: 'CV Maker - CV',
   });
 
   return (
@@ -98,7 +122,12 @@ function App() {
             <button onClick={toggleSidebar}>{BackIcon()}</button>
             <button onClick={resetData}>{RefreshIcon()}</button>
             <button onClick={dummyData}>{DummyDataIcon()}</button>
-            <button onClick={toggleForms}>{ThemeIcon()}</button>
+            <button
+              onClick={toggleForms}
+              style={{ color: !showForms ? 'white' : null }}
+            >
+              {ThemeIcon()}
+            </button>
           </div>
           {showForms ? (
             <>
@@ -117,7 +146,12 @@ function App() {
             </>
           ) : (
             <div>
-              <ThemeSettings darkMode={darkMode} setDarkMode={setDarkMode} />
+              <ThemeSettings
+                colors={{ mainColor, backgroundColor, textColor }}
+                updateColorScheme={updateColorScheme}
+                headerPosition={headerPosition}
+                setHeaderPosition={setHeaderPosition}
+              />
             </div>
           )}
         </div>
@@ -125,12 +159,16 @@ function App() {
 
       <div className="CVSection">
         <CV
-          ref={componentRef}
+          ref={cvRef}
           generalInfo={generalInfo}
           educationalExperience={educationalExperience}
           workExperience={workExperience}
+          colors={{ mainColor, backgroundColor, textColor }}
+          headerPosition={headerPosition}
         />
-        <button onClick={handlePrint}>Print this out!</button>
+        <button onClick={handlePDFPrint} className="pdfButton">
+          {PDFIcon()}
+        </button>
 
         {!showSidebar && (
           <button onClick={toggleSidebar} className="editButton">

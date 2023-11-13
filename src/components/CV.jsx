@@ -3,24 +3,62 @@ import { forwardRef } from 'react';
 
 // eslint-disable-next-line react/display-name
 const CV = forwardRef(
-  ({ generalInfo, educationalExperience, workExperience }, ref) => {
+  (
+    {
+      generalInfo,
+      educationalExperience,
+      workExperience,
+      colors,
+      headerPosition,
+    },
+    ref
+  ) => {
     return (
-      <div ref={ref} className="cvContainer">
-        <div className="cvPaper">
-          <div className="generalSectionCV">
-            <h1>{generalInfo.name}</h1>
-            <p>{generalInfo.email}</p>
-            <p>
+      <div className="cvContainer">
+        <div
+          ref={ref}
+          style={{
+            backgroundColor: colors.backgroundColor,
+          }}
+          className="cvPaper"
+        >
+          <div
+            style={{
+              backgroundColor: colors.mainColor,
+              alignItems:
+                headerPosition == 0
+                  ? 'flex-start'
+                  : headerPosition == 1
+                  ? 'center'
+                  : 'flex-end',
+              paddingLeft: headerPosition == 0 ? '50px' : null,
+              paddingRight: headerPosition == 2 ? '50px' : null,
+            }}
+            className="generalSectionCV"
+          >
+            <h1 style={{ color: colors.textColor }}>{generalInfo.name}</h1>
+            <p style={{ color: colors.textColor }}>{generalInfo.email}</p>
+            <p style={{ color: colors.textColor }}>
               {generalInfo.phoneNumber != '' && <span>#</span>}
               {generalInfo.phoneNumber}
             </p>
           </div>
           <div className="educationSectionCV">
-            {educationalExperience.length != 0 && <h1>Education</h1>}
+            {educationalExperience.length != 0 &&
+              educationalExperience.some((item) => !item.hidden) && (
+                <h1 style={{ color: colors.textColor }}>Education</h1>
+              )}
             {educationalExperience.map((educationItem, index) => {
               if (!educationItem.hidden) {
                 return (
-                  <div key={index} className="educationItem">
+                  <div
+                    style={{
+                      color: colors.textColor,
+                      borderColor: colors.mainColor,
+                    }}
+                    key={index}
+                    className="educationItem"
+                  >
                     <h3>{educationItem.typeOfEducation}</h3>
 
                     <h3>{educationItem.schoolName}</h3>
@@ -36,11 +74,21 @@ const CV = forwardRef(
             })}
           </div>
           <div className="workSectionCV">
-            {workExperience.length != 0 && <h1>Work Experience</h1>}
+            {workExperience.length != 0 &&
+              workExperience.some((item) => !item.hidden) && (
+                <h1 style={{ color: colors.textColor }}>Work Experience</h1>
+              )}
             {workExperience.map((workItem, index) => {
               if (!workItem.hidden) {
                 return (
-                  <div className="workItem" key={index}>
+                  <div
+                    style={{
+                      color: colors.textColor,
+                      borderColor: colors.mainColor,
+                    }}
+                    className="workItem"
+                    key={index}
+                  >
                     <h4>{workItem.jobDescription}</h4>
 
                     <h4>{workItem.companyName}</h4>

@@ -13,7 +13,7 @@ Persistant data with localStorage.
 ## Todos:
 
 ```
-    - styling of elements on cv paper (done for now)
-    - implement functionality of theme section (sunday)
-    - see if a pdf can be exported (implemented pdf export, some tweeks for layout needed)
+    - update font sizes to improve readibility and coherence
+    - update form styles to look less clunky
+
 ```

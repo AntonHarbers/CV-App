@@ -3,6 +3,8 @@
   flex-direction: column;
   gap: 2rem;
   justify-content: center;
+  width: 125%;
+  margin-left: -12.5%;
 }
 
 .themeFormContainer > h2 {
@@ -41,7 +43,7 @@
 
 .themeFormRow {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
