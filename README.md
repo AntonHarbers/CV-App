@@ -8,7 +8,7 @@ Using Reacts useState and Preacts signals implementations for state management. 
 Using the uuid library for custom item ids.
 Persistant data with localStorage.
 
-[Live Preview]()
+[Live Preview](https://remarkable-paprenjak-7ffb4b.netlify.app/)
 
 ## Todos:
 
