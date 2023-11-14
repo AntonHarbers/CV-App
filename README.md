@@ -15,5 +15,8 @@ Persistant data with localStorage.
 ```
     - update font sizes to improve readibility and coherence
     - update form styles to look less clunky
+    - drag and drop functionality to change order of things
+    - edit option to edit already created items
+    - change font options
 
 ```
