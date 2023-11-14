@@ -4,7 +4,7 @@ A CV Application made for the odin project curriculum.
 
 ## Notes:
 
-Using Reacts useState and Preacts signals implementations for state management. By default useState is commented out.
+Using Reacts useState implementation for state management
 Using the uuid library for custom item ids.
 Persistant data with localStorage.
 
