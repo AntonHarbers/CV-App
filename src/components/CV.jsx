@@ -37,11 +37,11 @@ const CV = forwardRef(
             className="generalSectionCV"
           >
             <h1 style={{ color: colors.textColor }}>{generalInfo.name}</h1>
-            <p style={{ color: colors.textColor }}>{generalInfo.email}</p>
-            <p style={{ color: colors.textColor }}>
+            <h2 style={{ color: colors.textColor }}>{generalInfo.email}</h2>
+            <h2 style={{ color: colors.textColor }}>
               {generalInfo.phoneNumber != '' && <span>#</span>}
               {generalInfo.phoneNumber}
-            </p>
+            </h2>
           </div>
           <div className="educationSectionCV">
             {educationalExperience.length != 0 &&
