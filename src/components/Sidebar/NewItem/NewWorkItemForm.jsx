@@ -1,24 +1,24 @@
-import { useState } from 'react';
 import '../../../styles/Form.css';
 import { emptyWorkItem } from '../../../utils/data';
 import { AddIcon } from '../../../utils/icons';
 import { v4 as uuidv4 } from 'uuid';
 
 import NewItemFormRow from '../../../utils/NewItemFormRow';
+import { signal } from '@preact/signals-react';
+
+const newItem = signal(emptyWorkItem(uuidv4()));
+
+const resetNewItem = () => {
+  newItem.value = emptyWorkItem(uuidv4());
+};
 
 export default function NewWorkItemForm({ addNewWorkExperience }) {
-  const [newItem, setNewItem] = useState(emptyWorkItem(uuidv4()));
-
-  const resetNewItem = () => {
-    setNewItem(emptyWorkItem(uuidv4()));
-  };
-
   const DataEmpty = () => {
     if (
-      newItem.jobDescription == '' ||
-      newItem.companyName == '' ||
-      newItem.startDate == '' ||
-      newItem.endDate == ''
+      newItem.value.jobDescription == '' ||
+      newItem.value.companyName == '' ||
+      newItem.value.startDate == '' ||
+      newItem.value.endDate == ''
     ) {
       return true;
     }
@@ -30,8 +30,7 @@ export default function NewWorkItemForm({ addNewWorkExperience }) {
       <NewItemFormRow
         itemName={'companyName'}
         newItem={newItem}
-        newItemValue={newItem.companyName}
-        setNewItem={setNewItem}
+        newItemValue={newItem.value.companyName}
         placeholderText={'Company Name'}
         labelText={'Company Name:'}
         propertyName={'companyName'}
@@ -39,8 +38,7 @@ export default function NewWorkItemForm({ addNewWorkExperience }) {
       <NewItemFormRow
         itemName={'jobDescription'}
         newItem={newItem}
-        newItemValue={newItem.jobDescription}
-        setNewItem={setNewItem}
+        newItemValue={newItem.value.jobDescription}
         placeholderText={'Job Description'}
         labelText={'Job Description:'}
         propertyName={'jobDescription'}
@@ -48,8 +46,7 @@ export default function NewWorkItemForm({ addNewWorkExperience }) {
       <NewItemFormRow
         itemName={'details'}
         newItem={newItem}
-        newItemValue={newItem.details}
-        setNewItem={setNewItem}
+        newItemValue={newItem.value.details}
         placeholderText={'Details'}
         labelText={'Details:'}
         propertyName={'details'}
@@ -58,8 +55,7 @@ export default function NewWorkItemForm({ addNewWorkExperience }) {
       <NewItemFormRow
         itemName={'startDateWork'}
         newItem={newItem}
-        newItemValue={newItem.startDate}
-        setNewItem={setNewItem}
+        newItemValue={newItem.value.startDate}
         placeholderText={'01.01.2021'}
         labelText={'From:'}
         propertyName={'startDate'}
@@ -67,8 +63,7 @@ export default function NewWorkItemForm({ addNewWorkExperience }) {
       <NewItemFormRow
         itemName={'endDateWork'}
         newItem={newItem}
-        newItemValue={newItem.endDate}
-        setNewItem={setNewItem}
+        newItemValue={newItem.value.endDate}
         placeholderText={'01.01.2022'}
         labelText={'To:'}
         propertyName={'endDate'}

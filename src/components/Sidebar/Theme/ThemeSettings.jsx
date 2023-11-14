@@ -4,33 +4,34 @@ import {
   RightThemeIcon,
   UpThemeIcon,
 } from '../../../utils/icons';
-
-export default function ThemeSettings({
-  colors,
-  updateColorScheme,
+import {
+  backgroundColor,
   headerPosition,
-  setHeaderPosition,
-}) {
+  mainColor,
+  textColor,
+} from '../../../utils/signals';
+
+export default function ThemeSettings({ updateColorScheme }) {
   return (
     <div className="themeFormContainer">
       <h2>Theme Settings</h2>
 
       <div className="themeFormRow">
         <button
-          style={{ color: headerPosition == 0 ? '#ffffff' : '#000000' }}
-          onClick={() => setHeaderPosition(0)}
+          style={{ color: headerPosition.value == 0 ? '#ffffff' : '#000000' }}
+          onClick={() => (headerPosition.value = 0)}
         >
           {LeftThemeIcon()}
         </button>
         <button
-          style={{ color: headerPosition == 1 ? '#ffffff' : '#000000' }}
-          onClick={() => setHeaderPosition(1)}
+          style={{ color: headerPosition.value == 1 ? '#ffffff' : '#000000' }}
+          onClick={() => (headerPosition.value = 1)}
         >
           {UpThemeIcon()}
         </button>
         <button
-          style={{ color: headerPosition == 2 ? '#ffffff' : '#000000' }}
-          onClick={() => setHeaderPosition(2)}
+          style={{ color: headerPosition.value == 2 ? '#ffffff' : '#000000' }}
+          onClick={() => (headerPosition.value = 2)}
         >
           {RightThemeIcon()}
         </button>
@@ -40,7 +41,7 @@ export default function ThemeSettings({
         <input
           type="color"
           name="mainColor"
-          value={colors.mainColor}
+          value={mainColor.value}
           onChange={(e) => updateColorScheme(1, e.target.value)}
           id="mainColor"
         />
@@ -50,7 +51,7 @@ export default function ThemeSettings({
         <input
           type="color"
           name="backgroundColor"
-          value={colors.backgroundColor}
+          value={backgroundColor.value}
           onChange={(e) => {
             updateColorScheme(2, e.target.value);
           }}
@@ -62,7 +63,7 @@ export default function ThemeSettings({
         <input
           type="color"
           name="secondaryColor"
-          value={colors.textColor}
+          value={textColor.value}
           onChange={(e) => {
             updateColorScheme(3, e.target.value);
           }}

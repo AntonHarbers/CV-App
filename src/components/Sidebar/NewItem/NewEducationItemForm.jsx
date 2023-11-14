@@ -1,23 +1,22 @@
-import { useState } from 'react';
 import '../../../styles/Form.css';
 import { emptyEducationItem } from '../../../utils/data';
 import { AddIcon } from '../../../utils/icons';
 import NewItemFormRow from '../../../utils/NewItemFormRow';
 import { v4 as uuidv4 } from 'uuid';
+import { signal } from '@preact/signals-react';
 
+const newItem = signal(emptyEducationItem(uuidv4()));
+
+const resetNewItem = () => {
+  newItem.value = emptyEducationItem(uuidv4());
+};
 export default function NewEducationItemForm({ addNewEducationalExperience }) {
-  const [newItem, setNewItem] = useState(emptyEducationItem(uuidv4()));
-
-  const resetNewItem = () => {
-    setNewItem(emptyEducationItem(uuidv4()));
-  };
-
   const DataEmpty = () => {
     if (
-      newItem.endDate == '' ||
-      newItem.startDate == '' ||
-      newItem.schoolName == '' ||
-      newItem.typeOfEducation == ''
+      newItem.value.endDate == '' ||
+      newItem.value.startDate == '' ||
+      newItem.value.schoolName == '' ||
+      newItem.value.typeOfEducation == ''
     ) {
       return true;
     }
@@ -29,8 +28,7 @@ export default function NewEducationItemForm({ addNewEducationalExperience }) {
       <NewItemFormRow
         itemName={'type'}
         newItem={newItem}
-        newItemValue={newItem.typeOfEducation}
-        setNewItem={setNewItem}
+        newItemValue={newItem.value.typeOfEducation}
         placeholderText={'Type of Education'}
         labelText={'Type of Education:'}
         propertyName={'typeOfEducation'}
@@ -38,8 +36,7 @@ export default function NewEducationItemForm({ addNewEducationalExperience }) {
       <NewItemFormRow
         itemName={'schoolName'}
         newItem={newItem}
-        newItemValue={newItem.schoolName}
-        setNewItem={setNewItem}
+        newItemValue={newItem.value.schoolName}
         placeholderText={'School Name'}
         labelText={'School Name:'}
         propertyName={'schoolName'}
@@ -47,8 +44,7 @@ export default function NewEducationItemForm({ addNewEducationalExperience }) {
       <NewItemFormRow
         itemName={'honors'}
         newItem={newItem}
-        newItemValue={newItem.honors}
-        setNewItem={setNewItem}
+        newItemValue={newItem.value.honors}
         placeholderText={'Honors'}
         labelText={'Honors:'}
         propertyName={'honors'}
@@ -56,8 +52,7 @@ export default function NewEducationItemForm({ addNewEducationalExperience }) {
       <NewItemFormRow
         itemName={'startDate'}
         newItem={newItem}
-        newItemValue={newItem.startDate}
-        setNewItem={setNewItem}
+        newItemValue={newItem.value.startDate}
         placeholderText={'01.01.2021'}
         labelText={'From:'}
         propertyName={'startDate'}
@@ -65,8 +60,7 @@ export default function NewEducationItemForm({ addNewEducationalExperience }) {
       <NewItemFormRow
         itemName={'endDate'}
         newItem={newItem}
-        newItemValue={newItem.endDate}
-        setNewItem={setNewItem}
+        newItemValue={newItem.value.endDate}
         placeholderText={'01.01.2022'}
         labelText={'To:'}
         propertyName={'endDate'}

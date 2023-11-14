@@ -2,7 +2,6 @@ export default function NewItemFormRow({
   itemName,
   newItem,
   newItemValue,
-  setNewItem,
   placeholderText,
   labelText,
   propertyName,
@@ -18,7 +17,8 @@ export default function NewItemFormRow({
         placeholder={placeholderText}
         value={newItemValue}
         onChange={(e) => {
-          setNewItem({ ...newItem, [propertyName]: e.target.value });
+          console.log(newItem.value);
+          newItem.value = { ...newItem.value, [propertyName]: e.target.value };
         }}
       />
     </div>

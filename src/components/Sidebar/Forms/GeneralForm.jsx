@@ -1,6 +1,7 @@
 import '../../../styles/GeneralInfoForm.css';
+import { generalInfo } from '../../../utils/signals';
 
-export default function GeneralForm({ generalInfo, setGeneralInfo }) {
+export default function GeneralForm() {
   return (
     <>
       <h2>General Information</h2>
@@ -10,10 +11,13 @@ export default function GeneralForm({ generalInfo, setGeneralInfo }) {
           <input
             type="text"
             id="name"
-            value={generalInfo.name}
-            onChange={(e) =>
-              setGeneralInfo({ ...generalInfo, name: e.target.value })
-            }
+            value={generalInfo.value.name}
+            onInput={(e) => {
+              generalInfo.value = {
+                ...generalInfo.value,
+                name: e.target.value,
+              };
+            }}
             placeholder="Enter your name..."
           />
         </div>
@@ -23,9 +27,12 @@ export default function GeneralForm({ generalInfo, setGeneralInfo }) {
           <input
             id="email"
             type="email"
-            value={generalInfo.email}
+            value={generalInfo.value.email}
             onChange={(e) =>
-              setGeneralInfo({ ...generalInfo, email: e.target.value })
+              (generalInfo.value = {
+                ...generalInfo.value,
+                email: e.target.value,
+              })
             }
             placeholder="test@email.com"
           />
@@ -35,9 +42,12 @@ export default function GeneralForm({ generalInfo, setGeneralInfo }) {
           <input
             id="tel"
             type="tel"
-            value={generalInfo.phoneNumber}
+            value={generalInfo.value.phoneNumber}
             onChange={(e) =>
-              setGeneralInfo({ ...generalInfo, phoneNumber: e.target.value })
+              (generalInfo.value = {
+                ...generalInfo.value,
+                phoneNumber: e.target.value,
+              })
             }
             placeholder="001 234 567"
           />

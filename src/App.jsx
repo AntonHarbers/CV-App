@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 import './styles/App.css';
 import { useReactToPrint } from 'react-to-print';
 import GeneralForm from './components/Sidebar/Forms/GeneralForm';
@@ -14,92 +14,62 @@ import {
   ThemeIcon,
 } from './utils/icons';
 import ThemeSettings from './components/Sidebar/Theme/ThemeSettings';
-import {
-  getEducationalXPFromStorage,
-  getWorkXPFromStorage,
-  getGeneralInfoFromStorage,
-  getMainColorFromStorage,
-  getBackgroundColorFromStorage,
-  getTextColorFromStorage,
-} from './utils/storage';
+
 import {
   dummyEducationData,
   dummyGeneralData,
   dummyWorkData,
 } from './utils/data';
+import {
+  backgroundColor,
+  educationalExperience,
+  generalInfo,
+  mainColor,
+  showForms,
+  showSidebar,
+  sidebarIsMounted,
+  textColor,
+  workExperience,
+} from './utils/signals';
 
 function App() {
-  const [showSidebar, setShowSidebar] = useState(false);
-  const [showForms, setShowForms] = useState(true);
-  const [sidebarIsMounted, setSidebarIsMounted] = useState(false);
-  const [generalInfo, setGeneralInfo] = useState(getGeneralInfoFromStorage);
-  const [educationalExperience, setEducationalExperience] = useState(
-    getEducationalXPFromStorage
-  );
-  const [workExperience, setWorkExperience] = useState(getWorkXPFromStorage);
-  const [mainColor, setMainColor] = useState(getMainColorFromStorage);
-  const [backgroundColor, setBackgroundColor] = useState(
-    getBackgroundColorFromStorage
-  );
-  const [textColor, setTextColor] = useState(getTextColorFromStorage);
-  // headerpositons: 0 = left, 1 = mid, 2 = right
-  const [headerPosition, setHeaderPosition] = useState(1);
-
   const toggleForms = () => {
-    setShowForms(!showForms);
-  };
-
-  const updateGeneralInfo = (newInfo) => {
-    setGeneralInfo(newInfo);
-    localStorage.setItem('generalInfo', JSON.stringify(newInfo));
-  };
-
-  const updateEducationalXP = (eduXP) => {
-    setEducationalExperience(eduXP);
-    localStorage.setItem('eduXP', JSON.stringify(eduXP));
-  };
-
-  const updateWorkXP = (workXP) => {
-    setWorkExperience(workXP);
-    localStorage.setItem('workXP', JSON.stringify(workXP));
+    showForms.value = !showForms.value;
   };
 
   const updateColorScheme = (colorInt, color) => {
     if (colorInt == 1) {
-      setMainColor(color);
-      localStorage.setItem('mainColor', color);
+      mainColor.value = color;
     } else if (colorInt == 2) {
-      setBackgroundColor(color);
-      localStorage.setItem('backgroundColor', color);
+      backgroundColor.value = color;
     } else {
-      setTextColor(color);
-      localStorage.setItem('textColor', color);
+      textColor.value = color;
     }
   };
 
   const resetData = () => {
-    updateGeneralInfo({ name: '', email: '', phoneNumber: '' });
-    updateEducationalXP([]);
-    updateWorkXP([]);
+    generalInfo.value = { name: '', email: '', phoneNumber: '' };
+    educationalExperience.value = [];
+    workExperience.value = [];
   };
 
   const dummyData = () => {
-    updateGeneralInfo(dummyGeneralData);
-    updateEducationalXP(dummyEducationData);
-    updateWorkXP(dummyWorkData);
+    generalInfo.value = dummyGeneralData;
+    educationalExperience.value = dummyEducationData;
+    workExperience.value = dummyWorkData;
   };
 
   const toggleSidebar = () => {
-    setSidebarIsMounted(!sidebarIsMounted);
-    if (!showSidebar) {
-      setShowSidebar(true);
+    sidebarIsMounted.value = !sidebarIsMounted.value;
+    if (!showSidebar.value) {
+      showSidebar.value = true;
       setTimeout(() => {
         document.querySelector('.formSection').classList.add('active');
-      }, 1);
+      }, 100);
     } else {
       document.querySelector('.formSection').classList.remove('active');
       setTimeout(() => {
-        setShowSidebar(false);
+        showSidebar.value = false;
       }, 300);
     }
   };
@@ -112,7 +82,7 @@ function App() {
 
   return (
     <div className="container">
-      {showSidebar && (
+      {showSidebar.value && (
         <div
           className={`formSection ${
             !sidebarIsMounted ? 'formSection-exit' : 'formSection-enter'
@@ -124,53 +94,32 @@ function App() {
             <button onClick={dummyData}>{DummyDataIcon()}</button>
             <button
               onClick={toggleForms}
-              style={{ color: !showForms ? 'white' : null }}
+              style={{ color: !showForms.value ? 'white' : null }}
             >
               {ThemeIcon()}
             </button>
           </div>
-          {showForms ? (
+          {showForms.value ? (
             <>
-              <GeneralForm
-                generalInfo={generalInfo}
-                updateGeneralInfo={updateGeneralInfo}
-              />
-              <EducationalForm
-                educationalExperience={educationalExperience}
-                setEducationalExperience={updateEducationalXP}
-              />
-              <PracticalForm
-                workExperience={workExperience}
-                setWorkExperience={updateWorkXP}
-              />
+              <GeneralForm />
+              <EducationalForm />
+              <PracticalForm />
             </>
           ) : (
             <div>
-              <ThemeSettings
-                colors={{ mainColor, backgroundColor, textColor }}
-                updateColorScheme={updateColorScheme}
-                headerPosition={headerPosition}
-                setHeaderPosition={setHeaderPosition}
-              />
+              <ThemeSettings updateColorScheme={updateColorScheme} />
             </div>
           )}
         </div>
       )}
 
       <div className="CVSection">
-        <CV
-          ref={cvRef}
-          generalInfo={generalInfo}
-          educationalExperience={educationalExperience}
-          workExperience={workExperience}
-          colors={{ mainColor, backgroundColor, textColor }}
-          headerPosition={headerPosition}
-        />
+        <CV ref={cvRef} />
         <button onClick={handlePDFPrint} className="pdfButton">
           {PDFIcon()}
         </button>
 
-        {!showSidebar && (
+        {!showSidebar.value && (
           <button onClick={toggleSidebar} className="editButton">
             {ShowSidebarIcon()}
           </button>

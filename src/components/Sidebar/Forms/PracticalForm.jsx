@@ -1,16 +1,19 @@
 import FormItemRow from '../../../utils/FormItemRow';
 import { DeleteIcon, HideIcon, ShowIcon } from '../../../utils/icons';
+import { workExperience } from '../../../utils/signals';
 import NewWorkItemForm from '../NewItem/NewWorkItemForm';
 
-export default function PracticalForm({ workExperience, setWorkExperience }) {
+export default function PracticalForm() {
   const addNewWorkExperience = (newItem) => {
-    const newArray = [...workExperience, newItem];
-    setWorkExperience(newArray);
+    const newArray = [...workExperience.value, newItem.value];
+    workExperience.value = newArray;
   };
 
   const removeWorkExperience = (idToRemove) => {
-    const newArray = workExperience.filter((item) => item.id !== idToRemove);
-    setWorkExperience(newArray);
+    const newArray = workExperience.value.filter(
+      (item) => item.id !== idToRemove
+    );
+    workExperience.value = newArray;
   };
 
   return (
@@ -18,7 +21,7 @@ export default function PracticalForm({ workExperience, setWorkExperience }) {
       <h2>Work Experience</h2>
       <div className="formContainer">
         <NewWorkItemForm addNewWorkExperience={addNewWorkExperience} />
-        {workExperience.map((item) => {
+        {workExperience.value.map((item) => {
           return (
             <div className="formItem" key={item.id}>
               <FormItemRow text={'Company Name:'} content={item.companyName} />
@@ -33,7 +36,7 @@ export default function PracticalForm({ workExperience, setWorkExperience }) {
                 <button
                   onClick={() => {
                     item.hidden = !item.hidden;
-                    setWorkExperience([...workExperience]);
+                    workExperience.value = [...workExperience.value];
                   }}
                 >
                   {item.hidden ? HideIcon() : ShowIcon()}

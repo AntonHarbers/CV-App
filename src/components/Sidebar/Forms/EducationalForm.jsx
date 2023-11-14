@@ -1,21 +1,19 @@
 import FormItemRow from '../../../utils/FormItemRow';
 import { DeleteIcon, HideIcon, ShowIcon } from '../../../utils/icons';
+import { educationalExperience } from '../../../utils/signals';
 import NewEducationItemForm from '../NewItem/NewEducationItemForm';
 
-export default function EducationalForm({
-  educationalExperience,
-  setEducationalExperience,
-}) {
+export default function EducationalForm() {
   const addNewEducationalExperience = (newItem) => {
-    const newArray = [...educationalExperience, newItem];
-    setEducationalExperience(newArray);
+    const newArray = [...educationalExperience.value, newItem.value];
+    educationalExperience.value = newArray;
   };
 
   const removeEducationalExperience = (idToRemove) => {
-    const newArray = educationalExperience.filter(
+    const newArray = educationalExperience.value.filter(
       (item) => item.id !== idToRemove
     );
-    setEducationalExperience(newArray);
+    educationalExperience.value = newArray;
   };
 
   return (
@@ -25,7 +23,7 @@ export default function EducationalForm({
         <NewEducationItemForm
           addNewEducationalExperience={addNewEducationalExperience}
         />
-        {educationalExperience.map((item) => {
+        {educationalExperience.value.map((item) => {
           return (
             <div className="formItem" key={item.id}>
               <FormItemRow
@@ -40,7 +38,9 @@ export default function EducationalForm({
                 <button
                   onClick={() => {
                     item.hidden = !item.hidden;
-                    setEducationalExperience([...educationalExperience]);
+                    educationalExperience.value = [
+                      ...educationalExperience.value,
+                    ];
                   }}
                 >
                   {item.hidden ? HideIcon() : ShowIcon()}
