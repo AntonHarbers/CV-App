@@ -57,3 +57,36 @@
   height: 3rem;
   width: 3rem;
 }
+
+input[type='color'] {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 5px;
+  padding: 0;
+  border: 0px;
+  background-color: var(--secondary);
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+select {
+  height: 3rem;
+  width: auto;
+  border-radius: 5px;
+  border: 0px;
+  background-color: var(--secondary);
+  color: var(--text-color);
+  font-size: 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+}
+
+select > option {
+  background-color: var(--secondary);
+  color: var(--text-color);
+  font-size: 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+}

@@ -47,6 +47,10 @@ function App() {
     }
   };
 
+  const updateFont = (newFont) => {
+    document.querySelector('.cvPaper').style.fontFamily = newFont;
+  };
+
   const resetData = () => {
     generalInfo.value = { name: '', email: '', phoneNumber: '' };
     educationalExperience.value = [];
@@ -107,7 +111,10 @@ function App() {
             </>
           ) : (
             <div>
-              <ThemeSettings updateColorScheme={updateColorScheme} />
+              <ThemeSettings
+                updateColorScheme={updateColorScheme}
+                updateFont={updateFont}
+              />
             </div>
           )}
         </div>

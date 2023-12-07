@@ -11,7 +11,7 @@ import {
   textColor,
 } from '../../../utils/signals';
 
-export default function ThemeSettings({ updateColorScheme }) {
+export default function ThemeSettings({ updateColorScheme, updateFont }) {
   return (
     <div className="themeFormContainer">
       <h2>Theme Settings</h2>
@@ -69,6 +69,23 @@ export default function ThemeSettings({ updateColorScheme }) {
           }}
           id="secondaryColor"
         />
+      </div>
+      <div className="themeFormRow">
+        <label htmlFor="fontType">Font: </label>
+        <select
+          name="fontType"
+          id="fontType"
+          onChange={(e) => {
+            console.log(e.target.value);
+            updateFont(e.target.value);
+          }}
+        >
+          <option value="serif">Serif</option>
+          <option value="sans-serif">Sans-Serif</option>
+          <option value="monospace">Monospace</option>
+          <option value="cursive">Cursive</option>
+          <option value="fantasy">Fantasy</option>
+        </select>
       </div>
     </div>
   );

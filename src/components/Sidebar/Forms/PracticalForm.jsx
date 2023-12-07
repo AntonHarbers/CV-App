@@ -20,7 +20,6 @@ export default function PracticalForm() {
     <>
       <h2>Work Experience</h2>
       <div className="formContainer">
-        <NewWorkItemForm addNewWorkExperience={addNewWorkExperience} />
         {workExperience.value.map((item) => {
           return (
             <div className="formItem" key={item.id}>
@@ -52,6 +51,7 @@ export default function PracticalForm() {
             </div>
           );
         })}
+        <NewWorkItemForm addNewWorkExperience={addNewWorkExperience} />
       </div>
     </>
   );

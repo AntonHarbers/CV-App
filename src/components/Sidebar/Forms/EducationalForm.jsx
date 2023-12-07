@@ -20,9 +20,6 @@ export default function EducationalForm() {
     <>
       <h2>Education</h2>
       <div className="formContainer">
-        <NewEducationItemForm
-          addNewEducationalExperience={addNewEducationalExperience}
-        />
         {educationalExperience.value.map((item) => {
           return (
             <div className="formItem" key={item.id}>
@@ -56,6 +53,9 @@ export default function EducationalForm() {
             </div>
           );
         })}
+        <NewEducationItemForm
+          addNewEducationalExperience={addNewEducationalExperience}
+        />
       </div>
     </>
   );

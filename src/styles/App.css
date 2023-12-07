@@ -1,11 +1,11 @@
 :root {
   --formBG: rgba(25, 116, 146, 0.584);
   --CVBG: rgb(236, 236, 236);
-  --dark: #222222;
+  --dark: rgba(0, 13, 30, 0.938);
   --light: #ffffff;
   --primary: #4b4e6d;
-  --secondary: #84dcc6;
-  --tertiary: #95a3b3;
+  --secondary: #60b3e0;
+  --tertiary: rgba(255, 255, 255, 0.306);
 }
 
 * {
