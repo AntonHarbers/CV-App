@@ -17,7 +17,6 @@ export default function NewItemFormRow({
         placeholder={placeholderText}
         value={newItemValue}
         onChange={(e) => {
-          console.log(newItem.value);
           newItem.value = { ...newItem.value, [propertyName]: e.target.value };
         }}
       />
