@@ -115,6 +115,11 @@ body {
   top: 2rem;
 }
 
+.pdfButton {
+  left: auto;
+  right: 2rem;
+}
+
 .editIcon,
 .pdfIcon {
   height: 3rem;
