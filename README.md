@@ -1,4 +1,4 @@
-# The Odin Project - React CV Application
+# React CV App - The Odin Project
 
 A CV Application made with React for the odin project curriculum.
 
