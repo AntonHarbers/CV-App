@@ -29,16 +29,13 @@
   transition: all 0.1s ease;
 }
 
-.sidebarIcon:hover {
+.sidebarIcon:hover,
+.lightModeIcon {
   color: var(--light);
 }
 
 .darkModeIcon {
   color: var(--dark);
-}
-
-.lightModeIcon {
-  color: var(--light);
 }
 
 .themeFormRow {
@@ -53,14 +50,13 @@
   color: var(--text-color);
 }
 
-.themeFormRow > input {
+.themeFormRow > input,
+input[type='color'] {
   height: 3rem;
   width: 3rem;
 }
 
 input[type='color'] {
-  height: 3rem;
-  width: 3rem;
   border-radius: 5px;
   padding: 0;
   border: 0px;

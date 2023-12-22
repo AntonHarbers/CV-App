@@ -54,11 +54,7 @@ body {
   }
 }
 
-.formSection-exit {
-  opacity: 0;
-  width: 0%;
-}
-
+.formSection-exit,
 .formSection-enter {
   opacity: 0;
   width: 0%;
@@ -106,7 +102,8 @@ body {
   color: var(--light);
 }
 
-.editButton {
+.editButton,
+.pdfButton {
   border-radius: 5px;
   border: 0px;
   width: 3rem;
@@ -118,30 +115,7 @@ body {
   top: 2rem;
 }
 
-.pdfButton {
-  border-radius: 5px;
-  border: 0px;
-  width: 3rem;
-  height: 2.5rem;
-  cursor: pointer;
-  background-color: transparent;
-  position: absolute;
-  right: 2rem;
-  top: 2rem;
-}
-
-.editIcon {
-  height: 3rem;
-  width: 3rem;
-  cursor: pointer;
-  transition: all 0.1s ease;
-  color: var(--primary);
-}
-
-.editIcon:hover {
-  color: var(--secondary);
-}
-
+.editIcon,
 .pdfIcon {
   height: 3rem;
   width: 3rem;
@@ -150,6 +124,7 @@ body {
   color: var(--primary);
 }
 
+.editIcon:hover,
 .pdfIcon:hover {
   color: var(--secondary);
 }

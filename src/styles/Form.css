@@ -36,16 +36,6 @@
   transition: all 0.15s ease;
 }
 
-.deleteIcon:hover {
-  opacity: 1;
-  transform: scale(1.1);
-}
-
-.deleteIcon:active {
-  opacity: 0.5;
-  transform: scale(0.9);
-}
-
 .newItemForm {
   width: 100%;
   display: flex;
@@ -74,12 +64,14 @@
   transition: all 0.15s ease;
 }
 
-.addIcon:hover {
+.addIcon:hover,
+.deleteIcon:hover {
   opacity: 1;
   transform: scale(1.2);
 }
 
-.addIcon:active {
+.addIcon:active,
+.deleteIcon:active {
   opacity: 0.5;
   transform: scale(0.9);
 }
